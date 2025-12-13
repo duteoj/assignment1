@@ -23,7 +23,7 @@ public class Bank {
 
     public void printAccounts(){
         for(Account a:accounts){
-            System.out.println(a);
+            System.out.println(a.toString());
         }
     }
 
