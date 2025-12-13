@@ -5,7 +5,7 @@ public class Bank {
     private ArrayList<Account> accounts = new ArrayList<>();
 
     public Bank(String name){
-        this.name = name;
+        setName(name);
 
     }
 
