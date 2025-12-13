@@ -1,14 +1,21 @@
 public class Account {
     private int AccountId;
+    private static int AccountId_gen = 1;
     private double balance;
     private Customer customer;
 
-    public int getAccountId(){
-        return AccountId;
+    Account(){
+        AccountId = AccountId_gen++;
     }
 
-    public void setAccountId(int AccountId){
-        this.AccountId = AccountId;
+    public Account(double balance, Customer customer) {
+        this();
+        setBalance(balance);
+        setCustomer(customer);
+    }
+
+    public int getAccountId(){
+        return AccountId;
     }
 
     public double getBalance(){
@@ -29,6 +36,10 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account #" + AccountId +'\n'+ ", Balance: " + balance +'\n'+ ", Owner: " + customer.getName()+" "+customer.getSurname();
+        return "Account #" + AccountId +'\n'+ "Balance: " + balance +'\n'+ "Owner: " + customer.getName()+" "+customer.getSurname();
+    }
+
+    public boolean SameOwner(Account other) {
+        return this.customer.equals(other.customer);
     }
 }

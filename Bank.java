@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+
 public class Bank {
     private String name;
     private ArrayList<Account> accounts = new ArrayList<>();
 
-    public Bank(String Name){
-        this.name = Name;
+    public Bank(String name){
+        this.name = name;
 
     }
 
@@ -16,10 +17,16 @@ public class Bank {
         this.name = name;
     }
 
-    publci void AddAccount(Account account){
+    public void AddAccount(Account account){
         accounts.add(account);
     }
 
-//suiiiii
+    public void printAccounts(){
+        for(Account a:accounts){
+            System.out.println(a);
+        }
+    }
+
+
 
 }
