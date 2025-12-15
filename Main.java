@@ -1,8 +1,10 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main() {
 
         Customer customer1 = new Customer("Assylzhan", "Yussup");
-        Customer customer2 = new Customer("Stephen", "Curry");
+        Customer customer2 = new Customer("Stephen", "Kurry");
+        customer2.setSurname("Curry");
+        customer2.getSurname();
 
         Account account1 = new Account(500.0, customer1);
         Account account2 = new Account(1200.5, customer2);
