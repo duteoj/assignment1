@@ -6,7 +6,6 @@ public class Bank {
 
     public Bank(String name){
         setName(name);
-
     }
 
     public String getName() {

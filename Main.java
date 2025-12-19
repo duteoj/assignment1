@@ -1,13 +1,24 @@
+import java.util.Scanner;
 public class Main {
     public static void main() {
 
-        Customer customer1 = new Customer("Assylzhan", "Yussup");
-        Customer customer2 = new Customer("Stephen", "Kurry");
+        Scanner sc = new Scanner(System.in);
+
+        String name1 = sc.nextLine();
+        String surname1 = sc.nextLine();
+        String name2 = sc.nextLine();
+        String surname2 = sc.nextLine();
+
+        Customer customer1 = new Customer(name1, surname1);
+        Customer customer2 = new Customer(name2, surname2);
         customer2.setSurname("Curry");
         customer2.getSurname();
 
-        Account account1 = new Account(500.0, customer1);
-        Account account2 = new Account(1200.5, customer2);
+        double balance1 = sc.nextDouble();
+        double balance2 = sc.nextDouble();
+
+        Account account1 = new Account(balance1, customer1);
+        Account account2 = new Account(balance2, customer2);
 
         System.out.println(account1.SameOwner(account2));
 
@@ -16,7 +27,6 @@ public class Main {
         bank.AddAccount(account1);
         bank.AddAccount(account2);
 
-        // Output to console
         bank.printAccounts();
     }
 }
