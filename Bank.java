@@ -1,31 +1,46 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Bank {
-    private String name;
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private List<Account> accounts;
 
-    public Bank(String name){
-        setName(name);
+    public Bank() {
+        accounts = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void AddAccount(Account account){
+    public void addAccount(Account account) {
         accounts.add(account);
     }
 
-    public void printAccounts(){
-        for(Account a:accounts){
-            System.out.println(a.toString());
-        }
+    // Метод для сортировки аккаунтов по балансу
+    public void sortByBalance() {
+        Collections.sort(accounts, Comparator.comparingDouble(Account::getBalance));
     }
 
+    // Метод для поиска аккаунтов по владельцу
+    public Account findAccountByOwner(String owner) {
+        for (Account account : accounts) {
+            if (account.getOwner().equals(owner)) {
+                return account;
+            }
+        }
+        return null;
+    }
 
+    // Метод для фильтрации аккаунтов по балансу
+    public List<Account> filterAccountsByBalance(double minBalance) {
+        List<Account> filteredAccounts = new ArrayList<>();
+        for (Account account : accounts) {
+            if (account.getBalance() >= minBalance) {
+                filteredAccounts.add(account);
+            }
+        }
+        return filteredAccounts;
+    }
 
+    // Метод для вывода всех аккаунтов
+    public void printAccounts() {
+        for (Account account : accounts) {
+            System.out.println(account);
+        }
+    }
 }

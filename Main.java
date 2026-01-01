@@ -1,32 +1,47 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Main {
-    public static void main() {
-
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Bank bank = new Bank();
 
-        String name1 = sc.nextLine();
-        String surname1 = sc.nextLine();
-        String name2 = sc.nextLine();
-        String surname2 = sc.nextLine();
-
-        Customer customer1 = new Customer(name1, surname1);
-        Customer customer2 = new Customer(name2, surname2);
-        customer2.setSurname("Curry");
-        customer2.getSurname();
-
+        // Ввод данных
+        String owner1 = sc.nextLine();
         double balance1 = sc.nextDouble();
+        sc.nextLine();  // consume the leftover newline character
+
+        // Создание аккаунтов
+        SavingAccount savingAccount = new SavingAccount(owner1, balance1);
+        bank.addAccount(savingAccount);
+
+        String owner2 = sc.nextLine();
         double balance2 = sc.nextDouble();
 
-        Account account1 = new Account(balance1, customer1);
-        Account account2 = new Account(balance2, customer2);
+        CurrentAccount currentAccount = new CurrentAccount(owner2, balance2);
+        bank.addAccount(currentAccount);
 
-        System.out.println(account1.SameOwner(account2));
+        // Применение процентов
+        savingAccount.applyInterest();
+        currentAccount.applyInterest();
 
-        Bank bank = new Bank("Halyk Bank");
-
-        bank.AddAccount(account1);
-        bank.AddAccount(account2);
-
+        // Сортировка и вывод
+        bank.sortByBalance();
         bank.printAccounts();
+
+        // Поиск и фильтрация
+        Account foundAccount = bank.findAccountByOwner("John");
+        if (foundAccount != null) {
+            System.out.println("Found account: " + foundAccount);
+        } else {
+            System.out.println("Account not found.");
+        }
+
+        List<Account> filteredAccounts = bank.filterAccountsByBalance(1000);
+        System.out.println("Accounts with balance >= 1000:");
+        for (Account account : filteredAccounts) {
+            System.out.println(account);
+        }
     }
 }

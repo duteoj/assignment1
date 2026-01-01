@@ -1,45 +1,54 @@
-public class Account {
-    private int AccountId;
-    private static int AccountId_gen = 1;
+public abstract class Account {
+    private static int id_gen = 1;
+    private int accountId;
     private double balance;
-    private Customer customer;
+    private String owner;
 
-    Account(){
-        AccountId = AccountId_gen++;
-    }
-
-    public Account(double balance, Customer customer) {
-        this();
-        setBalance(balance);
-        setCustomer(customer);
-    }
-
-    public int getAccountId(){
-        return AccountId;
-    }
-
-    public double getBalance(){
-        return balance;
-    }
-
-    public void setBalance(double balance){
+    // Конструктор
+    public Account(String owner, double balance) {
+        this.accountId = id_gen++;
+        this.owner = owner;
         this.balance = balance;
     }
 
-    public Customer getCustomer(){
-        return customer;
+    // Геттеры и сеттеры
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setCustomer(Customer customer){
-        this.customer = customer;
+    public double getBalance() {
+        return balance;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    // Абстрактный метод для вычисления процентов
+    public abstract void applyInterest();
+
+    // Переопределённый метод toString()
     @Override
     public String toString() {
-        return "Account #" + AccountId +'\n'+ "Balance: " + balance +'\n'+ "Owner: " + customer.getName()+" "+customer.getSurname();
+        return "Account ID: " + accountId + ", Owner: " + owner + ", Balance: " + balance;
     }
 
-    public boolean SameOwner(Account other) {
-        return this.customer.equals(other.customer);
+    // Переопределённый метод equals()
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Account account = (Account) obj;
+        return accountId == account.accountId;
+    }
+
+    // Переопределённый метод hashCode()
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(accountId);
     }
 }
