@@ -33,7 +33,7 @@ public class Bank {
         }
         return filteredAccounts;
     }
-    
+
     public void printAccounts() {
         for (Account account : accounts) {
             System.out.println(account);
