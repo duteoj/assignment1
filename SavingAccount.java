@@ -6,8 +6,7 @@ public class SavingAccount extends Account {
 
     @Override
     public void applyInterest() {
-        // Применение процентов на баланс
-        double interest = getBalance() * 0.05; // 5% годовых
+        double interest = getBalance() * 0.05;
         setBalance(getBalance() + interest);
     }
 

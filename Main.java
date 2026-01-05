@@ -7,12 +7,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank();
 
-        // Ввод данных
         String owner1 = sc.nextLine();
         double balance1 = sc.nextDouble();
-        sc.nextLine();  // consume the leftover newline character
+        sc.nextLine();
 
-        // Создание аккаунтов
         SavingAccount savingAccount = new SavingAccount(owner1, balance1);
         bank.addAccount(savingAccount);
 
@@ -22,15 +20,12 @@ public class Main {
         CurrentAccount currentAccount = new CurrentAccount(owner2, balance2);
         bank.addAccount(currentAccount);
 
-        // Применение процентов
         savingAccount.applyInterest();
         currentAccount.applyInterest();
 
-        // Сортировка и вывод
         bank.sortByBalance();
         bank.printAccounts();
 
-        // Поиск и фильтрация
         Account foundAccount = bank.findAccountByOwner("John");
         if (foundAccount != null) {
             System.out.println("Found account: " + foundAccount);

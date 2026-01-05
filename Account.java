@@ -4,14 +4,12 @@ public abstract class Account {
     private double balance;
     private String owner;
 
-    // Конструктор
     public Account(String owner, double balance) {
         this.accountId = id_gen++;
         this.owner = owner;
         this.balance = balance;
     }
 
-    // Геттеры и сеттеры
     public int getAccountId() {
         return accountId;
     }
@@ -28,16 +26,13 @@ public abstract class Account {
         return owner;
     }
 
-    // Абстрактный метод для вычисления процентов
     public abstract void applyInterest();
 
-    // Переопределённый метод toString()
     @Override
     public String toString() {
         return "Account ID: " + accountId + ", Owner: " + owner + ", Balance: " + balance;
     }
 
-    // Переопределённый метод equals()
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -46,7 +41,6 @@ public abstract class Account {
         return accountId == account.accountId;
     }
 
-    // Переопределённый метод hashCode()
     @Override
     public int hashCode() {
         return Integer.hashCode(accountId);
