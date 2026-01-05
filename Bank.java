@@ -11,12 +11,10 @@ public class Bank {
         accounts.add(account);
     }
 
-    // Метод для сортировки аккаунтов по балансу
     public void sortByBalance() {
         Collections.sort(accounts, Comparator.comparingDouble(Account::getBalance));
     }
 
-    // Метод для поиска аккаунтов по владельцу
     public Account findAccountByOwner(String owner) {
         for (Account account : accounts) {
             if (account.getOwner().equals(owner)) {
@@ -26,7 +24,6 @@ public class Bank {
         return null;
     }
 
-    // Метод для фильтрации аккаунтов по балансу
     public List<Account> filterAccountsByBalance(double minBalance) {
         List<Account> filteredAccounts = new ArrayList<>();
         for (Account account : accounts) {
@@ -36,8 +33,7 @@ public class Bank {
         }
         return filteredAccounts;
     }
-
-    // Метод для вывода всех аккаунтов
+    
     public void printAccounts() {
         for (Account account : accounts) {
             System.out.println(account);
