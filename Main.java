@@ -26,12 +26,14 @@ public class Main {
         bank.sortByBalance();
         bank.printAccounts();
 
-        Account foundAccount = bank.findAccountByOwner("John");
+        Account foundAccount = bank.findAccountByOwner("Curry");
         if (foundAccount != null) {
             System.out.println("Found account: " + foundAccount);
         } else {
             System.out.println("Account not found.");
         }
+
+        System.out.println();
 
         List<Account> filteredAccounts = bank.filterAccountsByBalance(1000);
         System.out.println("Accounts with balance >= 1000:");
