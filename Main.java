@@ -40,5 +40,18 @@ public class Main {
         for (Account account : filteredAccounts) {
             System.out.println(account);
         }
+
+        AccountDAO.insertAccount(savingAccount);
+        AccountDAO.insertAccount(currentAccount);
+
+        System.out.println("From database:");
+        for (String s : AccountDAO.getAllAccounts()) {
+            System.out.println(s);
+        }
+
+        AccountDAO.updateBalance(1, 5000);
+        AccountDAO.deleteAccount(2);
+
+
     }
 }
