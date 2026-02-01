@@ -6,6 +6,7 @@ public class Customer {
 
     Customer(){
         id = id_gen++;
+
     }
 
     public Customer(String name, String surname){

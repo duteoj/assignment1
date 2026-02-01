@@ -10,12 +10,15 @@ public class Main {
         String owner1 = sc.nextLine();
         double balance1 = sc.nextDouble();
         sc.nextLine();
+        String surname1 = sc.nextLine();
 
         SavingAccount savingAccount = new SavingAccount(owner1, balance1);
         bank.addAccount(savingAccount);
 
         String owner2 = sc.nextLine();
         double balance2 = sc.nextDouble();
+        sc.nextLine();
+        String surname2 = sc.nextLine();
 
         CurrentAccount currentAccount = new CurrentAccount(owner2, balance2);
         bank.addAccount(currentAccount);
@@ -23,34 +26,36 @@ public class Main {
         savingAccount.applyInterest();
         currentAccount.applyInterest();
 
-        bank.sortByBalance();
-        bank.printAccounts();
+ //       bank.sortByBalance();
+ //       bank.printAccounts();
 
-        Account foundAccount = bank.findAccountByOwner("Curry");
-        if (foundAccount != null) {
-            System.out.println("Found account: " + foundAccount);
-        } else {
-            System.out.println("Account not found.");
-        }
+ //       Account foundAccount = bank.findAccountByOwner("Curry");
+ //       if (foundAccount != null) {
+ //           System.out.println("Found account: " + foundAccount);
+ //       } else {
+ //           System.out.println("Account not found.");
+ //       }
 
-        System.out.println();
+ //       System.out.println();
 
-        List<Account> filteredAccounts = bank.filterAccountsByBalance(1000);
-        System.out.println("Accounts with balance >= 1000:");
-        for (Account account : filteredAccounts) {
-            System.out.println(account);
-        }
+ //       List<Account> filteredAccounts = bank.filterAccountsByBalance(1000);
+ //       System.out.println("Accounts with balance >= 1000:");
+ //       for (Account account : filteredAccounts) {
+ //           System.out.println(account);
+ //       }
 
-        AccountDAO.insertAccount(savingAccount);
-        AccountDAO.insertAccount(currentAccount);
+        AccountDAO.insertAccount(savingAccount ,surname1);
+        AccountDAO.insertAccount(currentAccount, surname2);
 
         System.out.println("From database:");
         for (String s : AccountDAO.getAllAccounts()) {
             System.out.println(s);
         }
 
-        AccountDAO.updateBalance(1, 5000);
-        AccountDAO.deleteAccount(2);
+        AccountDAO.updateBalance(1, 999999);
+        AccountDAO.deleteAccount(6);
+
+
 
 
     }
