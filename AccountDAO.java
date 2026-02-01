@@ -6,9 +6,9 @@ import java.util.List;
 
 public class AccountDAO {
 
-    public static void insertAccount(Account account, String surname) {
+    public static void insertAccount(Account account) {
         String sql =
-                "INSERT INTO accounts (owner, balance, type, surname) VALUES (?, ?, ?, ?)";
+                "INSERT INTO accounts (owner, balance, type) VALUES (?, ?, ?)";
 
         try (Connection conn = DBConnection.connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -16,7 +16,6 @@ public class AccountDAO {
             ps.setString(1, account.getOwner());
             ps.setDouble(2, account.getBalance());
             ps.setString(3, account.getClass().getSimpleName());
-            ps.setString(4, surname);
 
             ps.executeUpdate();
 

@@ -10,7 +10,6 @@ public class Main {
         String owner1 = sc.nextLine();
         double balance1 = sc.nextDouble();
         sc.nextLine();
-        String surname1 = sc.nextLine();
 
         SavingAccount savingAccount = new SavingAccount(owner1, balance1);
         bank.addAccount(savingAccount);
@@ -18,7 +17,6 @@ public class Main {
         String owner2 = sc.nextLine();
         double balance2 = sc.nextDouble();
         sc.nextLine();
-        String surname2 = sc.nextLine();
 
         CurrentAccount currentAccount = new CurrentAccount(owner2, balance2);
         bank.addAccount(currentAccount);
@@ -44,8 +42,8 @@ public class Main {
  //           System.out.println(account);
  //       }
 
-        AccountDAO.insertAccount(savingAccount ,surname1);
-        AccountDAO.insertAccount(currentAccount, surname2);
+        AccountDAO.insertAccount(savingAccount);
+        AccountDAO.insertAccount(currentAccount);
 
         System.out.println("From database:");
         for (String s : AccountDAO.getAllAccounts()) {
