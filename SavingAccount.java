@@ -1,7 +1,7 @@
 public class SavingAccount extends Account {
 
-    public SavingAccount(String owner, double balance) {
-        super(owner, balance);
+    public SavingAccount(int id, String owner, double balance) {
+        super(id, owner, balance);
     }
 
     @Override

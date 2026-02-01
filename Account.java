@@ -1,11 +1,15 @@
 public abstract class Account {
-    private static int id_gen = 1;
     private int accountId;
     private double balance;
     private String owner;
 
+    protected Account(int accountID, String owner, double balance) {
+        this.accountId = accountID;
+        this.owner = owner;
+        this.balance = balance;
+    }
+
     public Account(String owner, double balance) {
-        this.accountId = id_gen++;
         this.owner = owner;
         this.balance = balance;
     }

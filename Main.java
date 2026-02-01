@@ -7,18 +7,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank();
 
+        int id1 = sc.nextInt();
         String owner1 = sc.nextLine();
         double balance1 = sc.nextDouble();
         sc.nextLine();
 
-        SavingAccount savingAccount = new SavingAccount(owner1, balance1);
+        SavingAccount savingAccount = new SavingAccount(id1, owner1, balance1);
         bank.addAccount(savingAccount);
 
+        int id2 = sc.nextInt();
         String owner2 = sc.nextLine();
         double balance2 = sc.nextDouble();
         sc.nextLine();
 
-        CurrentAccount currentAccount = new CurrentAccount(owner2, balance2);
+        CurrentAccount currentAccount = new CurrentAccount(id2, owner2, balance2);
         bank.addAccount(currentAccount);
 
         savingAccount.applyInterest();
